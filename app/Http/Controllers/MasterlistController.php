@@ -38,13 +38,21 @@ class MasterlistController extends Controller
    } 
    public function where(){
      
-       $data = Masterlist::select('name','gender')
-       ->where('gender','=','male')->get();
+       $data = Masterlist::select('name','gender','age')
+      //  ->where('gender','=','male')
+       ->wheregender('male')
+       ->where('age','!=',25)
+      //  ->where('age','<=',25)
+      // ->where('age','>',25)
+       ->get();
        return response()->json($data, 200, [], JSON_PRETTY_PRINT);
    } 
    public function orwhere(){
-     
-      
+     $data = Masterlist::select('name','age')
+     ->where('age','=',25)
+     ->orWhere('age','=',20)
+     ->get();
+     return response()->json($data, 200, [], JSON_PRETTY_PRINT);
    } 
    public function wherebetween(){
      
