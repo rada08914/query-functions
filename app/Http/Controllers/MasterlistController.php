@@ -38,28 +38,21 @@ class MasterlistController extends Controller
    } 
    public function where(){
      
-      //  $data = Masterlist::
-       return dd($data);
+       $data = Masterlist::select('name','gender')
+       ->where('gender','=','male')->get();
+       return response()->json($data, 200, [], JSON_PRETTY_PRINT);
    } 
    public function orwhere(){
      
-      //  $data = Masterlist::
-       return dd($data);
+      
    } 
    public function wherebetween(){
      
-      //  $data = Masterlist::
-       return dd($data);
+     
    } 
    public function wherein(){
      
-      //  $data = Masterlist::
-       return dd($data);
-   } 
-   public function wherein(){
-      
-      //  $data = Masterlist::
-       return dd($data);
+     
    } 
 }
 
