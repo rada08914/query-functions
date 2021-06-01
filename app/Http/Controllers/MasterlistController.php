@@ -55,11 +55,32 @@ class MasterlistController extends Controller
      return response()->json($data, 200, [], JSON_PRETTY_PRINT);
    } 
    public function wherebetween(){
-     
+      $data = Masterlist::select('name','birthday','age')
+      // ->whereBetween('birthday',[
+      //    '1996-1-14',
+      //    '1997-6-20'
+
+      ->whereBetween('age',[
+         20,
+         25
+      ])
+      ->get();
+      return response()->json($data, 200, [], JSON_PRETTY_PRINT);
      
    } 
    public function wherein(){
+      $data = Masterlist::select('name','gender','age')
+      ->whereIn('age',[20,25,19])
+      ->get();
+      return response()->json($data, 200, [], JSON_PRETTY_PRINT);
      
+   } 
+   public function wherenull(){
+      $data = Masterlist::select('name','gender','age')
+      // ->whereNull('name')
+      ->where('name', 'LIKE','%cess%')
+      ->get();
+      return response()->json($data, 200, [], JSON_PRETTY_PRINT);
      
    } 
 }
